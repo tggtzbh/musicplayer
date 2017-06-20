@@ -63,6 +63,7 @@ let vm = new Vue({
         {
             if(this.playmod=="list")
             {
+                
                 //顺序播放
                 this.playindex=this.playindex+1;
                 this.playindex==this.musiclist.length? this.playindex=0:null;
