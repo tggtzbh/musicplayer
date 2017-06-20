@@ -1,6 +1,6 @@
-var media = document.getElementById("media");
-var media_intervalno=0;
-var vm = new Vue({
+let media = document.getElementById("media");
+let media_intervalno=0;
+let vm = new Vue({
     el: '#example',
     data: {
         "musiclist":{},  //播放列表
@@ -10,7 +10,8 @@ var vm = new Vue({
         "playmod":"list",//播放顺序 list-》顺序播放
         "playvolume":1,  //播放音量
         "play_time_full":60, //音频长度
-        "play_time_complete":0  //已播放进度
+        "play_time_complete":0,  //已播放进度
+        "play_pause":false
     },
     computed: {
 
@@ -51,9 +52,11 @@ var vm = new Vue({
         playAudio: function (event) {
             if(media.paused) {
                 media.play();
+                this.play_pause=false;
             } else {
                 //media.currentTime=media.duration*0.5;
                 media.pause();
+                this.play_pause=true;
             }
         },
         playnext:function(event)
@@ -103,6 +106,7 @@ var vm = new Vue({
                     this.playimgsrc=res.imgUrl;
                     media.setAttribute('src',this.playsrc);
                     media.play();
+                    this.play_pause=false;
                 },
                 response => {
                     // error callback

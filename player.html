@@ -12,7 +12,14 @@
     Your browser does not support the audio element.
 </audio>
     <div id="example">
-
+        <div id="controlbox" style="">
+            <div class="button" v-on:click="playAudio">
+                <i class="fa fa-play" v-bind:class="{ 'fa-play': play_pause , 'fa-pause': !play_pause}"></i>
+            </div>
+            <div class="button" v-on:click="playnext">
+                <i class="fa fa-forward"></i>
+            </div>
+        </div>
 
         <div class="count-box" v-for="(musicitem, musicitem_index) in musiclist">
             <div class="count-box-index">{{musicitem_index+1 | formate_count_box_index}}</div>
@@ -46,8 +53,9 @@
     <div id="button_play" v-on:click="playAudio">播放/暂停<i class="fa fa-play"></i></div>
     <div id="button_next" v-on:click="playnext">下一首</div>
     <div id="button_info" v-on:click="playvolumeset">靜音/取消靜音</div>
+        <div style="height: 4.2143rem;">
 
-
+        </div>
     </div>
     <script src="./js/vue.js"></script>
     <script src="./js/vue-resource.js"></script>
