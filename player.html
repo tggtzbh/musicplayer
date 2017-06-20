@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>榴莲音乐-音乐有味道</title>
     <link rel="stylesheet" type="text/css" href="./css/player_control.css">
-    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/font-awesome.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
 <audio id="media" src="">
@@ -42,7 +43,7 @@
                 <div class="audio-progress-touch" onmousedown="play.completion.main_mouseDown(event)" draggable="true"></div>
             </div>
         </div>
-    <div id="button_play" v-on:click="playAudio">播放/暂停</div>
+    <div id="button_play" v-on:click="playAudio">播放/暂停<i class="fa fa-play"></i></div>
     <div id="button_next" v-on:click="playnext">下一首</div>
     <div id="button_info" v-on:click="playvolumeset">靜音/取消靜音</div>
 

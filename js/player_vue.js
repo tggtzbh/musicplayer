@@ -34,7 +34,7 @@ var vm = new Vue({
     mounted: function () {
         this.$http({
             method:'GET',
-            url:'/music/',
+            url:'index.php',
             data:{}
             //emulateJSON: true
         }).then(response => {
@@ -96,7 +96,7 @@ var vm = new Vue({
         },
         playmusic:function(hash)
         {
-            this.$http.post('/music/',{ hash: hash} , {emulateJSON:true} ).then(
+            this.$http.post('index.php',{ hash: hash} , {emulateJSON:true} ).then(
                 response => {
                     let res=JSON.parse(response.body);
                     this.playsrc=res.url;
