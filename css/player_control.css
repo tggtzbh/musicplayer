@@ -1,0 +1,105 @@
+.audio-progress {
+    width: 500px;
+    display: inline-block;
+    height: 4px;
+    background: hsla(0,0%,100%,.5);
+    border-radius: 2px;
+}
+
+.audio-progress .audio-progress-box .audio-progress-touch {
+    float: right;
+    width: 10px;
+    min-width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    position: relative;
+    top: -3px;
+    box-shadow: 0 0 5px 0 #7d7d7d;
+}
+.audio-info-img-main {
+    display: inline-block;
+    width: 210px;
+    height: 186px;
+}
+.audio-info-img-main .audio-info-img{
+    vertical-align: middle;
+    width: 186px;
+    height: 186px;
+}
+.audio-info-img-main .audio-info-img-top {
+    content: "";
+    position: relative;
+    display: inline-block;
+    margin-top: -187px;
+    left: 9px;
+    top: 0;
+    width: 201px;
+    float: left;
+    height: 180px;
+    background: url(../img/album_cover_player.png) 0 0 no-repeat;
+}
+
+
+.count-box {
+    padding: 10px 15px;
+    display: flex;
+    display: -webkit-flex;
+    background: url(../img/count-box-border.png) no-repeat bottom;
+    background-size: 100% auto;
+    -ms-align-items: center;
+    -o-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+}
+.count-box .count-box-index {
+    font-size: 14px;
+    color: #fff;
+    padding-right: 10px;
+    width: 25px;
+}
+.count-box .count-box-info {
+    -o-flex: 1;
+    -moz-flex: 1;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.count-box .count-box-title {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+.count-box .count-box-name {
+    font-size: 1.2rem;
+    color: #DFDFDF;
+}
+.count-box .count-box-button {
+    height: 35px;
+    width: 35px;
+    display: flex;
+    display: -webkit-flex;
+    -ms-justify-content: flex-end;
+    -o-justify-content: flex-end;
+    -moz-justify-content: flex-end;
+    justify-content: flex-end;
+    -ms-align-items: center;
+    -o-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+}
+
+body{
+    background-color: #3a7ead;
+    background-image: url("../img/huise17.jpg");
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    -moz-background-size:100% 100%;
+}
+body, dd, div, dl, dt, em, h1, h2, h3, h4, h5, h6, i::before, input, label, li, ol, p, select, span, textarea, ul {
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}

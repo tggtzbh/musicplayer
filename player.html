@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>榴莲音乐-音乐有味道</title>
+    <link rel="stylesheet" type="text/css" href="./css/player_control.css">
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<audio id="media" src="">
+    Your browser does not support the audio element.
+</audio>
+    <div id="example">
+
+
+        <div class="count-box" v-for="(musicitem, musicitem_index) in musiclist">
+            <div class="count-box-index">{{musicitem_index+1 | formate_count_box_index}}</div>
+            <div class="count-box-info">
+                <!--<p class="count-box-title">{{ musicitem.name }}</p>-->
+                <p class="count-box-name">{{ musicitem.singer }} - {{ musicitem.name }}</p>
+            </div>
+            <div class="count-box-button">
+                <i class="icon-angle-down"></i>
+            </div>
+        </div>
+
+        <div>
+            当前播放：{{ musiclist[playindex].name }}<br/>
+            歌手：{{ musiclist[playindex].singer }}<br/>
+            专辑图片：<div class="audio-info-img-main">
+                        <img class="audio-info-img" v-bind:src="playimgsrc"/>
+                        <div class="audio-info-img-top"></div>
+                    </div>
+            <br/>
+            音量：{{ playvolume }}<br/>
+            总长度：{{play_time_full | formate_time_s}}<br/>
+            播放长度：{{play_time_complete | formate_time_s}}<br/>
+        </div>
+
+        播放进度：<div id="audio-progress" class="audio-progress" onclick="play.completion.bak_Click(event)">
+            <div id="audio-progress-box" class="audio-progress-box" v-bind:style="{ width: (play_time_complete/play_time_full)*100+'%' }" >
+                <div class="audio-progress-touch" onmousedown="play.completion.main_mouseDown(event)" draggable="true"></div>
+            </div>
+        </div>
+    <div id="button_play" v-on:click="playAudio">播放/暂停</div>
+    <div id="button_next" v-on:click="playnext">下一首</div>
+    <div id="button_info" v-on:click="playvolumeset">靜音/取消靜音</div>
+
+
+    </div>
+    <script src="./js/vue.js"></script>
+    <script src="./js/vue-resource.js"></script>
+    <script src="./js/player_control.js"></script>
+    <script src="./js/player_vue.js"></script>
+
+</body>
+</html>
