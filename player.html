@@ -19,6 +19,12 @@
             <div class="button" v-on:click="playnext">
                 <i class="fa fa-forward"></i>
             </div>
+            <div class="musicfilename">
+                {{ musiclist[playindex].name }} - {{ musiclist[playindex].singer }}
+            </div>
+            <div class="button right" >
+                <i class="fa fa-bars"></i>
+            </div>
         </div>
 
         <div class="count-box" v-for="(musicitem, musicitem_index) in musiclist">
@@ -33,8 +39,6 @@
         </div>
 
         <div>
-            当前播放：{{ musiclist[playindex].name }}<br/>
-            歌手：{{ musiclist[playindex].singer }}<br/>
             专辑图片：<div class="audio-info-img-main">
                         <img class="audio-info-img" v-bind:src="playimgsrc"/>
                         <div class="audio-info-img-top"></div>
@@ -50,8 +54,6 @@
                 <div class="audio-progress-touch" onmousedown="play.completion.main_mouseDown(event)" draggable="true"></div>
             </div>
         </div>
-    <div id="button_play" v-on:click="playAudio">播放/暂停<i class="fa fa-play"></i></div>
-    <div id="button_next" v-on:click="playnext">下一首</div>
     <div id="button_info" v-on:click="playvolumeset">靜音/取消靜音</div>
         <div style="height: 4.2143rem;">
 

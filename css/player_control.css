@@ -98,8 +98,10 @@
     bottom: 0;
     background: rgba(0,0,0,.9);
     color: #fff;
+    z-index: 999999;
 }
 #controlbox .button{
+    color: #fff;
     display: inline-block;
     float: left;
     width: 4rem;
@@ -108,9 +110,22 @@
     line-height: 4rem;
     text-align: center;
 }
+#controlbox .right{
+    float: right;
+}
 #controlbox .button i{
     color: #fff;
 }
+#controlbox .musicfilename{
+    color: #fff;
+    display: inline-block;
+    float: left;
+    font-size: 1.4rem;
+    height: 4.2143rem;
+    line-height: 4rem;
+    text-align: center;
+}
+
 body{
     background-color: #3a7ead;
     background-image: url("../img/huise17.jpg");
