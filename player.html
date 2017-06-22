@@ -12,7 +12,7 @@
     Your browser does not support the audio element.
 </audio>
     <div id="example">
-        <div id="controlbox" style="">
+        <div id="controlbox" v-if="!showcontrol" style="">
             <div class="button" v-on:click="playAudio">
                 <i class="fa fa-play" v-bind:class="{ 'fa-play': play_pause , 'fa-pause': !play_pause}"></i>
             </div>
@@ -22,7 +22,7 @@
             <div class="musicfilename">
                 {{ musiclist[playindex].name }} - {{ musiclist[playindex].singer }}
             </div>
-            <div class="button right" >
+            <div class="button right" v-on:click="showcontrol=!showcontrol">
                 <i class="fa fa-bars"></i>
             </div>
         </div>
@@ -34,7 +34,7 @@
                 <p class="count-box-name">{{ musicitem.singer }} - {{ musicitem.name }}</p>
             </div>
             <div class="count-box-button">
-                <i class="icon-angle-down"></i>
+                <i class="icson-angle-down"></i>
             </div>
         </div>
 
@@ -58,6 +58,9 @@
         <div style="height: 4.2143rem;">
 
         </div>
+    </div>
+    <div id="maincontrol" v-if="showcontrol">
+
     </div>
     <script src="./js/vue.js"></script>
     <script src="./js/vue-resource.js"></script>
