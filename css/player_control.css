@@ -90,7 +90,7 @@
 }
 
 #controlbox{
-    display: block;
+    display: table;
     width: 100%;
     height: 4.2143rem;
     position: fixed;
@@ -102,28 +102,39 @@
 }
 #controlbox .button{
     color: #fff;
-    display: inline-block;
-    float: left;
+    display: table-cell;
     width: 4rem;
     font-size: 2rem;
     height: 4.2143rem;
     line-height: 4rem;
     text-align: center;
+    padding: 0px 15px;
 }
 #controlbox .right{
-    float: right;
+
 }
 #controlbox .button i{
     color: #fff;
 }
 #controlbox .musicfilename{
-    color: #fff;
+    /*color: #fff;
     display: inline-block;
     float: left;
     font-size: 1.4rem;
     height: 4.2143rem;
     line-height: 4rem;
+    text-align: center;*/
+    color: #fff;
+    display: table-cell;
+    font-size: 1.4rem;
+    height: 4.2143rem;
+    line-height: 4rem;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80px;
+
 }
 
 body{
