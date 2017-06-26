@@ -73,7 +73,7 @@
                 <div class="row">
                     <div class="lyric-box">
                         <div class="lyric-content">
-                            <p name="lyric" v-for="(lyric_str,lyric_id) in playingmusic.lyric" v-bind:id="lyric_id" v-bind:tim="lyric_str.tim" style="color: rgb(255, 255, 255);">{{lyric_str.str}}</p>
+                            <p name="lyric" v-for="(lyric_str,lyric_id) in playingmusic.lyric" v-bind:id="'lyric_'+lyric_id" v-bind:tim="lyric_str.tim" style="color: rgb(255, 255, 255);">{{lyric_str.str}}</p>
                             <!--<p name="lyric" id="1" style="color: rgb(255, 255, 255);">词曲：阿肆</p>
                             <p name="lyric" id="2" style="color: rgb(255, 255, 255);">演唱：阿肆</p>
                             <p name="lyric" id="3" style="color: rgb(255, 255, 255);"></p>

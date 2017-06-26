@@ -45,7 +45,7 @@ let vm = new Vue({
             let res=eval(response.data);
             this.musiclist=res;
             this.playmusic(this.musiclist[this.playindex].hash);
-            media_intervalno=setInterval("vm.playInterval()",100);
+            media_intervalno=setInterval("vm.playInterval()",10);
         }, response => {
             // error callback
         });
@@ -100,6 +100,14 @@ let vm = new Vue({
                 this.play_time_complete=parseInt(media.currentTime);
 
                 this.play_time_complete=media.currentTime.toFixed(2);
+                let list=document.getElementsByName("lyric");
+                //alert( play_time_complete.toFixed(1));
+                for (var k = 0, length = list.length; k < length; k++) {
+                    if(parseFloat(list[k].getAttribute("tim")).toFixed(1)==media.currentTime.toFixed(1))
+                    {
+                        list[k].style.color="rgb(166, 226, 45)";
+                    }
+                }
             }
         },
         playmusic:function(hash)
