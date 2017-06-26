@@ -12,7 +12,7 @@
     Your browser does not support the audio element.
 </audio>
     <div id="example">
-        <div id="controlbox" v-if="!showcontrol" style="">
+        <div id="controlbox" v-show="false==showcontrol" style="">
             <div class="button" v-on:click="playAudio">
                 <i class="fa fa-play" v-bind:class="{ 'fa-play': play_pause , 'fa-pause': !play_pause}"></i>
             </div>
@@ -38,29 +38,60 @@
             </div>
         </div>
 
-        <div>
-            专辑图片：<div class="audio-info-img-main">
+        <div style="height: 4.2143rem;">
+            <!---_底部空白高度-->
+        </div>
+        <div id="maincontrol"  v-if="showcontrol">
+            <div class="row">
+                <div class="button" v-on:click="showcontrol=!showcontrol">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+            <div class="row main" style="flex-grow: 1;">
+                <div class="row">
+                    <div class="audio-info-img-main">
                         <img class="audio-info-img" v-bind:src="playimgsrc"/>
                         <div class="audio-info-img-top"></div>
                     </div>
-            <br/>
-            音量：{{ playvolume }}<br/>
-            总长度：{{play_time_full | formate_time_s}}<br/>
-            播放长度：{{play_time_complete | formate_time_s}}<br/>
-        </div>
-
-        播放进度：<div id="audio-progress" class="audio-progress" onclick="play.completion.bak_Click(event)">
-            <div id="audio-progress-box" class="audio-progress-box" v-bind:style="{ width: (play_time_complete/play_time_full)*100+'%' }" >
-                <div class="audio-progress-touch" onmousedown="play.completion.main_mouseDown(event)" draggable="true"></div>
+                    <br/>
+                    音量：{{ playvolume }}<br/>
+                    总长度：{{play_time_full | formate_time_s}}<br/>
+                    播放长度：{{play_time_complete }}<br/>
+                    播放进度：<div id="audio-progress" class="audio-progress" onclick="play.completion.bak_Click(event)">
+                        <div id="audio-progress-box" class="audio-progress-box" v-bind:style="{ width: (play_time_complete/play_time_full)*100+'%' }" >
+                            <div class="audio-progress-touch" onmousedown="play.completion.main_mouseDown(event)" draggable="true"></div>
+                        </div>
+                    </div><br/>
+                    <div id="button_info" v-on:click="playvolumeset">靜音/取消靜音</div>
+                    <div class="button" v-on:click="playAudio">
+                        <i class="fa fa-play" v-bind:class="{ 'fa-play': play_pause , 'fa-pause': !play_pause}"></i>
+                    </div>
+                    <div class="button" v-on:click="playnext">
+                        <i class="fa fa-forward"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="lyric-box">
+                        <div class="lyric-content">
+                            <p name="lyric" v-for="(lyric_str,lyric_id) in playingmusic.lyric" v-bind:id="lyric_id" v-bind:tim="lyric_str.tim" style="color: rgb(255, 255, 255);">{{lyric_str.str}}</p>
+                            <!--<p name="lyric" id="1" style="color: rgb(255, 255, 255);">词曲：阿肆</p>
+                            <p name="lyric" id="2" style="color: rgb(255, 255, 255);">演唱：阿肆</p>
+                            <p name="lyric" id="3" style="color: rgb(255, 255, 255);"></p>
+                            <p name="lyric" id="4" style="color: rgb(255, 255, 255);">最近你变得很冷漠</p>
+                            <p name="lyric" id="5" style="color: rgb(166, 226, 45);">让我有些不知所措</p>
+                            <p name="lyric" id="6" style="color: rgb(255, 255, 255);">其实我没期待太多</p>-->
+                        </div>
+                    </div>
+                    <!--{{playingmusic.lyric}}-->
+                </div>
             </div>
-        </div>
-    <div id="button_info" v-on:click="playvolumeset">靜音/取消靜音</div>
-        <div style="height: 4.2143rem;">
+            <div class="row">
+                <div class="button" v-on:click="showcontrol=!showcontrol">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
 
         </div>
-    </div>
-    <div id="maincontrol" v-if="showcontrol">
-
     </div>
     <script src="./js/vue.js"></script>
     <script src="./js/vue-resource.js"></script>

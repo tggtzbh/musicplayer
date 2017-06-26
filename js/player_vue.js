@@ -11,8 +11,9 @@ let vm = new Vue({
         "playvolume":1,  //播放音量
         "play_time_full":60, //音频长度
         "play_time_complete":0,  //已播放进度
-        "play_pause":false,
-        "showcontrol":true
+        "play_pause":false, //是否暂停
+        "showcontrol":true, //是否显示主面板
+        "playingmusic":{}  //当前正在播放的歌曲信息
     },
     computed: {
 
@@ -97,6 +98,8 @@ let vm = new Vue({
             {
                 this.play_time_full=parseInt(media.duration);
                 this.play_time_complete=parseInt(media.currentTime);
+
+                this.play_time_complete=media.currentTime.toFixed(2);
             }
         },
         playmusic:function(hash)
@@ -104,6 +107,17 @@ let vm = new Vue({
             this.$http.post('index.php',{ hash: hash} , {emulateJSON:true} ).then(
                 response => {
                     let res=JSON.parse(response.body);
+                    this.playingmusic=res;
+                    this.playingmusic.lyric=this.playingmusic.lyric.split("\n");
+                    for (var k = 0, length = this.playingmusic.lyric.length; k < length; k++) {
+                        str=this.playingmusic.lyric[k].replace(/\[(\d*):(\d*).(\d*)\]/g, "$1-$2-$3-");
+                        str_2=this.playingmusic.lyric[k].replace(/\[(\d*):(\d*).(\d*)\]/g, "");
+                        str=str.split("-");
+                        str=parseInt(str[0])*60+parseInt(str[1])+"."+str[2];
+                        this.playingmusic.lyric[k]={};
+                        this.playingmusic.lyric[k]['str']=str_2;
+                        this.playingmusic.lyric[k]['tim']=str;
+                    }
                     this.playsrc=res.url;
                     this.playimgsrc=res.imgUrl;
                     media.setAttribute('src',this.playsrc);
