@@ -11,7 +11,8 @@ let vm = new Vue({
         "playvolume":1,  //播放音量
         "play_time_full":60, //音频长度
         "play_time_complete":0,  //已播放进度
-        "play_pause":false
+        "play_pause":false,
+        "showcontrol":true
     },
     computed: {
 
