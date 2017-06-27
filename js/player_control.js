@@ -32,6 +32,9 @@ var play={
         {
             if(play.completion.music_setback)
             {
+                document.getElementsByName("lyric").forEach(function(value, index, array) {
+                    value.style.color="rgb(255, 255, 255)";
+                });
                 var offset_l=play.publicfun.getLeft(document.getElementById("audio-progress"));
                 var offset_r=document.getElementById("audio-progress").clientWidth+offset_l ;
                 //var offset_t=getTop(document.getElementById("audio-progress"));

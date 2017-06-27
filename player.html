@@ -62,12 +62,14 @@
                             <div class="audio-progress-touch" onmousedown="play.completion.main_mouseDown(event)" draggable="true"></div>
                         </div>
                     </div><br/>
-                    <div id="button_info" v-on:click="playvolumeset">靜音/取消靜音</div>
                     <div class="button" v-on:click="playAudio">
                         <i class="fa fa-play" v-bind:class="{ 'fa-play': play_pause , 'fa-pause': !play_pause}"></i>
                     </div>
                     <div class="button" v-on:click="playnext">
                         <i class="fa fa-forward"></i>
+                    </div>
+                    <div class="button" v-on:click="playvolume_state_set">
+                        <i class="fa" v-bind:class="{ 'fa-volume-off': !playvolume_state , 'fa-volume-up': playvolume_state}"></i>
                     </div>
                 </div>
                 <div class="row">

@@ -9,6 +9,7 @@ let vm = new Vue({
         "playimgsrc":"",    //当前播放歌曲源文件
         "playmod":"list",//播放顺序 list-》顺序播放
         "playvolume":1,  //播放音量
+        "playvolume_state":true,  //播放是否静音 true-不静音 false-静音
         "play_time_full":60, //音频长度
         "play_time_complete":0,  //已播放进度
         "play_pause":false, //是否暂停
@@ -72,8 +73,9 @@ let vm = new Vue({
             }
             this.playmusic(this.musiclist[this.playindex].hash);
         },
-        playvolumeset:function(volume)
+        playvolume_state_set:function(volume)
         {
+            this.playvolume_state=!this.playvolume_state;
             if(media.muted==1)
             {
                 media.muted=0;
@@ -119,6 +121,14 @@ let vm = new Vue({
         },
         playmusic:function(hash)
         {
+            let ltricbox=document.getElementsByClassName("lyric-content");
+            if(ltricbox.length>0)
+            {
+                ltricbox[0].style.top="210px";
+            }
+            document.getElementsByName("lyric").forEach(function(value, index, array) {
+                value.style.color="rgb(255, 255, 255)";
+            });
             this.$http.post('index.php',{ hash: hash} , {emulateJSON:true} ).then(
                 response => {
                     let res=JSON.parse(response.body);
