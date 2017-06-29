@@ -1,5 +1,5 @@
 .audio-progress {
-    width: 500px;
+    width: 100%;
     display: inline-block;
     height: 4px;
     background: hsla(0,0%,100%,.5);

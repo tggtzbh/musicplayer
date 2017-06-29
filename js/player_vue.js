@@ -62,11 +62,32 @@ let vm = new Vue({
                 this.play_pause=true;
             }
         },
+        playmodchange:function(event)
+        {
+            switch (this.playmod)
+            {
+                case "list":
+                    this.playmod="random";
+                    break;
+                case "random":
+                    this.playmod="list";
+                    break;
+            }
+        },
+        playpre:function(event)
+        {
+            if(this.playmod=="list")
+            {
+                //顺序播放
+                this.playindex=this.playindex-1;
+                this.playindex==-1? this.playindex=this.musiclist.length-1:null;
+            }
+            this.playmusic(this.musiclist[this.playindex].hash);
+        },
         playnext:function(event)
         {
             if(this.playmod=="list")
             {
-                
                 //顺序播放
                 this.playindex=this.playindex+1;
                 this.playindex==this.musiclist.length? this.playindex=0:null;
