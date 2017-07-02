@@ -49,15 +49,33 @@ function getmusicurl($hash)
     $musicitem['lyric']=$musiciteminfojson['lyrics'];
     return $musicitem;
 }
-//var_dump($_REQUEST);
+
+function getsearch($name)
+{
+    $ret=file_get_contents("http://songsearch.kugou.com/song_search_v2?callback=jQuery191034642999175022426_1489023388639&keyword=".$name."&page=1&pagesize=30&userid=-1&clientver=&platform=WebFilter&tag=em&filter=2&iscorrection=1&privilege_filter=0&_=1489023388641");
+    /*$ret=preg_replace("/^jQuery191034642999175022426_1489023388639\(/","",$ret);
+    $ret=preg_replace("/\)$/","",$ret);*/
+    $ret=preg_replace("/^jQuery191034642999175022426_1489023388639\()/","",$ret);
+    $ret=preg_replace("/\)$/","",$ret);
+    $ret=json_decode($ret,true);
+    $list=$ret['data']['lists'];
+    var_dump($list);
+    exit();
+}
+
 if(isset($_REQUEST['hash']))
 {
     $a=getmusicurl($_REQUEST['hash']);
+    json_encode($a);
+    exit();
 }
-else
+if(isset($_REQUEST['search']))
 {
-    $a=getkugouindex();
+    $a=getsearch($_REQUEST['search']);
+    json_encode($a);
+    exit();
 }
+$a=getkugouindex();
 echo json_encode($a);
 exit();
 

@@ -13,7 +13,7 @@ let vm = new Vue({
         "play_time_full":60, //音频长度
         "play_time_complete":0,  //已播放进度
         "play_pause":false, //是否暂停
-        "showcontrol":true, //是否显示主面板
+        "showcontrol":false, //是否显示主面板
         "playingmusic":{}  //当前正在播放的歌曲信息
     },
     computed: {
@@ -92,6 +92,11 @@ let vm = new Vue({
                 this.playindex=this.playindex+1;
                 this.playindex==this.musiclist.length? this.playindex=0:null;
             }
+            this.playmusic(this.musiclist[this.playindex].hash);
+        },
+        playlistindex:function(index)
+        {
+            this.playindex=index;
             this.playmusic(this.musiclist[this.playindex].hash);
         },
         playvolume_state_set:function(volume)

@@ -19,7 +19,7 @@
             <div class="button" v-on:click="playnext">
                 <i class="fa fa-forward"></i>
             </div>
-            <div class="musicfilename">
+            <div class="musicfilename" v-on:click="showcontrol=!showcontrol">
                 {{ musiclist[playindex].name }} - {{ musiclist[playindex].singer }}
             </div>
             <div class="button right" v-on:click="showcontrol=!showcontrol">
@@ -27,7 +27,8 @@
             </div>
         </div>
 
-        <div class="count-box" v-show="!showcontrol" v-for="(musicitem, musicitem_index) in musiclist">
+        <!-- 播放列表 -->
+        <div class="count-box" v-show="!showcontrol" v-for="(musicitem, musicitem_index) in musiclist" v-on:dblclick="playlistindex(musicitem_index)">
             <div class="count-box-index">{{musicitem_index+1 | formate_count_box_index}}</div>
             <div class="count-box-info">
                 <!--<p class="count-box-title">{{ musicitem.name }}</p>-->
@@ -38,13 +39,21 @@
             </div>
         </div>
 
+        <!-- 曲库 -->
+        <div class="songbook">
+            <div class="search_bar">
+
+            </div>
+
+        </div>
+
         <div style="height: 4.2143rem;">
             <!---_底部空白高度-->
         </div>
         <div id="maincontrol"  v-show="showcontrol">
             <div class="row">
                 <div class="button" v-on:click="showcontrol=!showcontrol">
-                    <i class="fa fa-bars"></i>
+                    <i class="fa fa-arrow-down"></i>
                 </div>
             </div>
             <div class="row main" style="flex-grow: 1;">
@@ -58,7 +67,7 @@
                     总长度：{{play_time_full | formate_time_s}}<br/>
                     播放长度：{{play_time_complete | formate_time_s}}<br/>
                     <div class="button" v-on:click="playmodchange">
-                        <i class="fa" v-bind:class="{ 'fa-bars': playmod=='list' , 'fa-random': playmod=='random'}"></i>
+                        <i class="fa" v-bind:class="{ 'fa-refresh': playmod=='list' , 'fa-random': playmod=='random'}"></i>
                     </div>
                     <div class="button" v-on:click="playpre">
                         <i class="fa fa-backward"></i>
@@ -89,8 +98,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="button" v-on:click="showcontrol=!showcontrol">
-                    <i class="fa fa-bars"></i>
+                <div class="musicfilename">
+                    {{ musiclist[playindex].name }} - {{ musiclist[playindex].singer }}
                 </div>
             </div>
 
