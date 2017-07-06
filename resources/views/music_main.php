@@ -22,13 +22,28 @@
         <div class="musicfilename" v-on:click="showcontrol=!showcontrol">
             {{ musiclist[playindex].name }} - {{ musiclist[playindex].singer }}
         </div>
-        <div class="button right" v-on:click="showcontrol=!showcontrol">
+        <div class="button right" v-on:click="showlist=!showlist">
             <i class="fa fa-bars"></i>
         </div>
     </div>
 
+    <!-- 曲库 -->
+    <div class="songbook" v-show="!showcontrol && !showlist">
+        <div class="search_bar">
+            <div class="search_bar_input">
+                <input type="text" placeholder="输入歌名/歌手进行搜索">
+            </div>
+            <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M0000041RKcW3jle9C.jpg" alt="">
+        </div>
+        <div class="songbook_list" v-for="(musicitem, musicitem_index) in musiclist">
+            {{musicitem_index+1 | formate_count_box_index}}
+        </div>
+
+    </div>
+
+
     <!-- 播放列表 -->
-    <div class="count-box" v-show="!showcontrol" v-for="(musicitem, musicitem_index) in musiclist" v-on:dblclick="playlistindex(musicitem_index)">
+    <div class="count-box" v-show="!showcontrol && showlist" v-for="(musicitem, musicitem_index) in musiclist" v-on:dblclick="playlistindex(musicitem_index)">
         <div class="count-box-index">{{musicitem_index+1 | formate_count_box_index}}</div>
         <div class="count-box-info">
             <!--<p class="count-box-title">{{ musicitem.name }}</p>-->
@@ -39,17 +54,6 @@
         </div>
     </div>
 
-    <!-- 曲库 -->
-    <div class="songbook">
-        <div class="search_bar">
-
-        </div>
-
-    </div>
-
-    <div style="height: 4.2143rem;">
-        <!---_底部空白高度-->
-    </div>
     <div id="maincontrol"  v-show="showcontrol">
         <div class="row">
             <div class="button" v-on:click="showcontrol=!showcontrol">
@@ -98,11 +102,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="musicfilename">
+            <div class="musicfilename" v-on:click="showcontrol=!showcontrol">
                 {{ musiclist[playindex].name }} - {{ musiclist[playindex].singer }}
             </div>
         </div>
 
+    </div>
+    <div style="height: 4.2143rem;">
+        <!---_底部空白高度-->
     </div>
 </div>
 <script src="./js/vue.js"></script>

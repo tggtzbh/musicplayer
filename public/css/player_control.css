@@ -94,8 +94,30 @@
 .songbook .search_bar
 {
     width: 100%;
-    display: flex;
+    display: block;
     height: 100px;
+}
+.songbook .search_bar .search_bar_input
+{
+    display: block;
+    width: 100%;
+    position: fixed;
+    padding: 10px;
+}
+.songbook .search_bar input
+{
+    border: 1px solid hsla(0,0%,100%,.1);
+    padding: 5px 10px;
+    background: hsla(0,0%,100%,.3);
+    font-size: 1.4rem;
+    height: 2.8rem;
+    color: #fff;
+    width: 100%;
+    border-radius: 5px;
+}
+.songbook .search_bar img
+{
+    width: 100%;
 }
 
 

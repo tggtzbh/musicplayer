@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/musicplayer.iml" filepath="$PROJECT_DIR$/.idea/musicplayer.iml" />
+      <module fileurl="file://D:\phpStudy\WWW\music\musicplayer\.idea\musicplayer.iml" filepath="D:\phpStudy\WWW\music\musicplayer\.idea\musicplayer.iml" />
     </modules>
   </component>
 </project>
