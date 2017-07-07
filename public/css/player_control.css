@@ -95,13 +95,13 @@
 {
     width: 100%;
     display: block;
-    height: 100px;
+    /*height: 100px;*/
 }
 .songbook .search_bar .search_bar_input
 {
     display: block;
     width: 100%;
-    position: fixed;
+    position: absolute;
     padding: 10px;
 }
 .songbook .search_bar input

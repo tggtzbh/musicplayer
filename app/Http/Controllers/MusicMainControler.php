@@ -10,12 +10,16 @@ namespace App\Http\Controllers;
 
 
 use App\Netdata;
+use App\QQMusic;
 use Illuminate\Http\Request;
 
 class MusicMainControler extends Controller
 {
     public function getIndexView() //获取界面文件
     {
+        $r=QQMusic::get_index();
+        var_dump($r);
+        exit();
         return view("music_main");
     }
 

@@ -35,8 +35,15 @@
             </div>
             <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M0000041RKcW3jle9C.jpg" alt="">
         </div>
-        <div class="songbook_list" v-for="(musicitem, musicitem_index) in musiclist">
-            {{musicitem_index+1 | formate_count_box_index}}
+        <div class="songbook_list">
+            <ul>
+                <li v-for="(musicitem, musicitem_index) in musiclist">
+                    {{musicitem_index+1 | formate_count_box_index}}
+                </li>
+                <li v-for="(musicitem, musicitem_index) in musiclist">
+                    {{musicitem_index+1 | formate_count_box_index}}
+                </li>
+            </ul>
         </div>
 
     </div>
