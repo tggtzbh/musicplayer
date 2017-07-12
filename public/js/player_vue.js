@@ -4,6 +4,7 @@ let vm = new Vue({
     el: '#example',
     data: {
         "musiclist":{},  //播放列表
+        "indexlist":{},   //曲库展示列表
         "playindex":0,   //当前播放歌曲
         "playsrc":"",    //当前播放歌曲源文件
         "playimgsrc":"",    //当前播放歌曲源文件
@@ -39,6 +40,19 @@ let vm = new Vue({
     mounted: function () {
         this.$http({
             method:'GET',
+            url:'getIndexList',
+            data:{}
+            //emulateJSON: true
+        }).then(response => {
+            play.publicfun.init();
+            let res=eval(response.data);
+            this.indexlist=res;
+        }, response => {
+            // error callback
+        });
+
+        this.$http({
+            method:'GET',
             url:'getMusicList',
             data:{}
             //emulateJSON: true
@@ -46,7 +60,7 @@ let vm = new Vue({
             play.publicfun.init();
             let res=eval(response.data);
             this.musiclist=res;
-            this.playmusic(this.musiclist[this.playindex].hash);
+            this.playmusic(this.musiclist[this.playindex].hash,this.musiclist[this.playindex].from);
             media_intervalno=setInterval("vm.playInterval()",10);
         }, response => {
             // error callback
@@ -83,7 +97,7 @@ let vm = new Vue({
                 this.playindex=this.playindex-1;
                 this.playindex==-1? this.playindex=this.musiclist.length-1:null;
             }
-            this.playmusic(this.musiclist[this.playindex].hash);
+            this.playmusic(this.musiclist[this.playindex].hash,this.musiclist[this.playindex].from);
         },
         playnext:function(event)
         {
@@ -93,12 +107,12 @@ let vm = new Vue({
                 this.playindex=this.playindex+1;
                 this.playindex==this.musiclist.length? this.playindex=0:null;
             }
-            this.playmusic(this.musiclist[this.playindex].hash);
+            this.playmusic(this.musiclist[this.playindex].hash,this.musiclist[this.playindex].from);
         },
         playlistindex:function(index)
         {
             this.playindex=index;
-            this.playmusic(this.musiclist[this.playindex].hash);
+            this.playmusic(this.musiclist[this.playindex].hash,this.musiclist[this.playindex].from);
         },
         playvolume_state_set:function(volume)
         {
@@ -140,7 +154,7 @@ let vm = new Vue({
                 }
             }
         },
-        playmusic:function(hash)
+        playmusic:function(hash,from)
         {
             let ltricbox=document.getElementsByClassName("lyric-content");
             if(ltricbox.length>0)
@@ -150,7 +164,7 @@ let vm = new Vue({
             document.getElementsByName("lyric").forEach(function(value, index, array) {
                 value.style.color="rgb(255, 255, 255)";
             });
-            this.$http.post('getMusicResouse',{ hash: hash} , {emulateJSON:true} ).then(
+            this.$http.post('getMusicResouse',{ hash: hash,from:from} , {emulateJSON:true} ).then(
                 response => {
                     //let res=JSON.parse(response.body);
                     let res=response.body;

@@ -37,11 +37,8 @@
         </div>
         <div class="songbook_list">
             <ul>
-                <li v-for="(musicitem, musicitem_index) in musiclist">
-                    {{musicitem_index+1 | formate_count_box_index}}
-                </li>
-                <li v-for="(musicitem, musicitem_index) in musiclist">
-                    {{musicitem_index+1 | formate_count_box_index}}
+                <li v-for="(musicitem, musicitem_index) in indexlist">
+                    {{musicitem_index+1 | formate_count_box_index}} - {{musicitem.name }}
                 </li>
             </ul>
         </div>

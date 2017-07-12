@@ -40,18 +40,25 @@ class Netdata
         return $htmllist;
     }
 
-    static function getmusicurl($hash)
+    static function getmusicurl($hash,$from)
     {
-        $musiciteminfotext = file_get_contents('http://www.kugou.com/yy/index.php?r=play/getdata&hash='.$hash);
-        $musicitem = array();
-        $musiciteminfojson=json_decode($musiciteminfotext,true);
-        $musiciteminfojson=$musiciteminfojson['data'];
-        $musicitem['name'] = $musiciteminfojson['song_name'];
-        $musicitem['singer'] = $musiciteminfojson['author_name'];
-        $musicitem['extName']=$musiciteminfojson['audio_name'];
-        $musicitem['imgUrl']=$musiciteminfojson['img'];
-        $musicitem['url']=$musiciteminfojson['play_url'];
-        $musicitem['lyric']=$musiciteminfojson['lyrics'];
+        if($from=="kugou")
+        {
+            $musiciteminfotext = file_get_contents('http://www.kugou.com/yy/index.php?r=play/getdata&hash='.$hash);
+            $musicitem = array();
+            $musiciteminfojson=json_decode($musiciteminfotext,true);
+            $musiciteminfojson=$musiciteminfojson['data'];
+            $musicitem['name'] = $musiciteminfojson['song_name'];
+            $musicitem['singer'] = $musiciteminfojson['author_name'];
+            $musicitem['extName']=$musiciteminfojson['audio_name'];
+            $musicitem['imgUrl']=$musiciteminfojson['img'];
+            $musicitem['url']=$musiciteminfojson['play_url'];
+            $musicitem['lyric']=$musiciteminfojson['lyrics'];
+        }
+        if($from=="qqmusic")
+        {
+            $musicitem=QQMusic::getmusicurl($hash);
+        }
         return $musicitem;
     }
 
