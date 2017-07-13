@@ -130,9 +130,10 @@ let vm = new Vue({
             }
         },
         playInterval:function(){
-            console.log(media.ended);
             if(media.ended)
             {
+                clearInterval(media_intervalno);
+                media_intervalno=0;
                 this.playnext();
             }
             else
@@ -173,6 +174,10 @@ let vm = new Vue({
             });
             this.$http.post('getMusicResouse',{ hash: hash,from:from} , {emulateJSON:true} ).then(
                 response => {
+                    if(media_intervalno==0)
+                    {
+                        media_intervalno=setInterval("vm.playInterval()",10);
+                    }
                     //let res=JSON.parse(response.body);
                     let res=response.body;
                     this.playingmusic=res;
@@ -194,6 +199,10 @@ let vm = new Vue({
                 },
                 response => {
                     // error callback
+                    if(media_intervalno==0)
+                    {
+                        media_intervalno=setInterval("vm.playInterval()",10);
+                    }
                 }
             );
         },
