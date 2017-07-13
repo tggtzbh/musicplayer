@@ -60,7 +60,10 @@ let vm = new Vue({
             play.publicfun.init();
             let res=eval(response.data);
             this.musiclist=res;
-            this.playmusic(this.musiclist[this.playindex].hash,this.musiclist[this.playindex].from);
+            if(this.musiclist.length>0)
+            {
+                this.playmusic(this.musiclist[this.playindex].hash,this.musiclist[this.playindex].from);
+            }
             media_intervalno=setInterval("vm.playInterval()",10);
         }, response => {
             // error callback
@@ -127,6 +130,7 @@ let vm = new Vue({
             }
         },
         playInterval:function(){
+            console.log(media.ended);
             if(media.ended)
             {
                 this.playnext();
@@ -189,6 +193,23 @@ let vm = new Vue({
                     // error callback
                 }
             );
+        },
+        addToPlaylist:function(index,playnow)
+        {
+            if(playnow)
+            {
+                this.musiclist.splice(0,0,this.indexlist[index]);
+                //this.musiclist=this.indexlist[index].concat(this.musiclist);
+                this.playmusic(this.musiclist[0].hash,this.musiclist[0].from);
+            }
+            else
+            {
+                this.musiclist=this.musiclist.concat(this.indexlist[index]);
+                if(this.musiclist.length==1)
+                {
+                    this.playmusic(this.musiclist[0].hash,this.musiclist[0].from);
+                }
+            }
         }
     }
 })

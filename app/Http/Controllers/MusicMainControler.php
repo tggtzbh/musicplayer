@@ -22,14 +22,14 @@ class MusicMainControler extends Controller
 
     public function getIndexList() //获取界面文件
     {
-        $r=QQMusic::get_index();
+        $r=Netdata::get_index();
         return json_encode($r);
     }
 
     public function getMusicList() //获取播放列表
     {
         //$res=Netdata::getkugouindex();
-        $res=QQMusic::get_index();
+        $res=Netdata::get_playlist();
         return json_encode($res);
     }
 

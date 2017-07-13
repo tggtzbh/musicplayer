@@ -77,7 +77,6 @@
 }
 .count-box .count-box-button {
     height: 35px;
-    width: 35px;
     display: flex;
     display: -webkit-flex;
     -ms-justify-content: flex-end;
@@ -88,6 +87,11 @@
     -o-align-items: center;
     -moz-align-items: center;
     align-items: center;
+    font-size: 1.6rem;
+    color: #DFDFDF;
+}
+.count-box .count-box-button i{
+    margin: auto 5px;
 }
 
 
@@ -214,6 +218,9 @@
     height: 22px;
 }
 
+html{
+    min-height: 100%;
+}
 body{
     background-color: #3a7ead;
     background-image: url("../img/huise17.jpg");

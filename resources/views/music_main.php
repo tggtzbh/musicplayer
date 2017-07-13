@@ -19,8 +19,11 @@
         <div class="button" v-on:click="playnext">
             <i class="fa fa-forward"></i>
         </div>
-        <div class="musicfilename" v-on:click="showcontrol=!showcontrol">
-            {{ musiclist[playindex].name }} - {{ musiclist[playindex].singer }}
+        <div class="musicfilename" v-on:click="showcontrol=!showcontrol" v-if="musiclist.length>0">
+            {{ musiclist[playindex].singer }} - {{ musiclist[playindex].name }}
+        </div>
+        <div class="musicfilename" v-if="musiclist.length==0">
+            榴莲音乐-音乐有味道
         </div>
         <div class="button right" v-on:click="showlist=!showlist">
             <i class="fa fa-bars"></i>
@@ -36,11 +39,19 @@
             <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M0000041RKcW3jle9C.jpg" alt="">
         </div>
         <div class="songbook_list">
-            <ul>
+            <div class="count-box" style="" v-for="(musicitem, musicitem_index) in indexlist">
+                <div class="count-box-index"> {{musicitem_index+1 | formate_count_box_index}}</div>
+                <div class="count-box-info"><p class="count-box-name">{{ musicitem.singer }} - {{ musicitem.name }}</p></div>
+                <div class="count-box-button">
+                    <i class="fa fa-plus" v-on:click="addToPlaylist(musicitem_index,false)"></i>
+                    <i class="fa fa-play" v-on:click="addToPlaylist(musicitem_index,true)"></i>
+                </div>
+            </div>
+            <!--<ul>
                 <li v-for="(musicitem, musicitem_index) in indexlist">
                     {{musicitem_index+1 | formate_count_box_index}} - {{musicitem.name }}
                 </li>
-            </ul>
+            </ul>-->
         </div>
 
     </div>
@@ -106,8 +117,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="musicfilename" v-on:click="showcontrol=!showcontrol">
-                {{ musiclist[playindex].name }} - {{ musiclist[playindex].singer }}
+            <div class="musicfilename" v-on:click="showcontrol=!showcontrol" v-if="musiclist.length>0">
+                {{ musiclist[playindex].singer }} - {{ musiclist[playindex].name }}
+            </div>
+            <div class="musicfilename" v-if="musiclist.length==0">
+                榴莲音乐-音乐有味道
             </div>
         </div>
 
