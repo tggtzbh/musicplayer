@@ -145,12 +145,15 @@ let vm = new Vue({
                 for (var k = 0, length = list.length; k < length; k++) {
                     if(parseFloat(list[k].getAttribute("tim")).toFixed(1)==media.currentTime.toFixed(1))
                     {
+                        for(let j=0;j<list.length;j++)
+                        {
+                            list[j].style.color="rgb(255, 255, 255)";
+                        }
                         list[k].style.color="rgb(166, 226, 45)";
                         let nu=parseInt(list[k].getAttribute("id").replace("lyric_",""));
                         if(nu>0)
                         {
                             nu--;
-                            document.getElementById("lyric_"+nu).style.color="rgb(255, 255, 255)";
                             let ltricbox=document.getElementsByClassName("lyric-content");
                             ltricbox[0].style.top=(210-22*nu)+"px";
                         }

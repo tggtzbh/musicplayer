@@ -41,7 +41,7 @@
         <div class="songbook_list">
             <div class="count-box" style="" v-for="(musicitem, musicitem_index) in indexlist">
                 <div class="count-box-index"> {{musicitem_index+1 | formate_count_box_index}}</div>
-                <div class="count-box-info"><p class="count-box-name">{{ musicitem.singer }} - {{ musicitem.name }}</p></div>
+                <div class="count-box-info"><p class="count-box-name" v-on:dblclick="addToPlaylist(musicitem_index,true)">{{ musicitem.singer }} - {{ musicitem.name }}</p></div>
                 <div class="count-box-button">
                     <i class="fa fa-plus" v-on:click="addToPlaylist(musicitem_index,false)"></i>
                     <i class="fa fa-play" v-on:click="addToPlaylist(musicitem_index,true)"></i>
