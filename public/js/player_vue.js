@@ -64,7 +64,6 @@ let vm = new Vue({
             {
                 this.playmusic(this.musiclist[this.playindex].hash,this.musiclist[this.playindex].from);
             }
-            media_intervalno=setInterval("vm.playInterval()",10);
         }, response => {
             // error callback
         });
@@ -164,6 +163,8 @@ let vm = new Vue({
         },
         playmusic:function(hash,from)
         {
+            clearInterval(media_intervalno);
+            media_intervalno=0;
             let ltricbox=document.getElementsByClassName("lyric-content");
             if(ltricbox.length>0)
             {
