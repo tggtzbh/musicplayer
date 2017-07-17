@@ -155,7 +155,9 @@ let vm = new Vue({
                         {
                             nu--;
                             let ltricbox=document.getElementsByClassName("lyric-content");
-                            ltricbox[0].style.top=(210-22*nu)+"px";
+                            //ltricbox[0].style.top=(210-22*nu)+"px";
+                            console.log(list[k].offsetTop);
+                            ltricbox[0].style.top=(210-list[k].offsetTop)+"px";
                         }
                     }
                 }

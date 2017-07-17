@@ -215,7 +215,7 @@
     max-height: 100%;
 }
 .lyric-box .lyric-content p{
-    height: 22px;
+    line-height: 22px;
 }
 
 html{
