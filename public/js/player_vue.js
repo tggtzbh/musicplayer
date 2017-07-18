@@ -69,6 +69,18 @@ let vm = new Vue({
         });
     },
     methods: {
+        search:function(){
+          let key=document.getElementById("search_keyword").value;
+          this.$http.post('getMusicSearchList',{ keyword: key} , {emulateJSON:true} ).then(
+              response => {
+                  //console.log(response.body);
+                  vm.$set(vm,'indexlist',response.body);
+              },
+              response => {
+                  // error callback
+              }
+            );
+        },
         playAudio: function (event) {
             if(media.paused) {
                 media.play();

@@ -60,11 +60,20 @@ class KuGou
         $ret=file_get_contents("http://songsearch.kugou.com/song_search_v2?callback=jQuery191034642999175022426_1489023388639&keyword=".$name."&page=1&pagesize=30&userid=-1&clientver=&platform=WebFilter&tag=em&filter=2&iscorrection=1&privilege_filter=0&_=1489023388641");
         /*$ret=preg_replace("/^jQuery191034642999175022426_1489023388639\(/","",$ret);
         $ret=preg_replace("/\)$/","",$ret);*/
-        $ret=preg_replace("/^jQuery191034642999175022426_1489023388639\()/","",$ret);
+        $ret=preg_replace("/^jQuery191034642999175022426_1489023388639\(/","",$ret);
         $ret=preg_replace("/\)$/","",$ret);
         $ret=json_decode($ret,true);
         $list=$ret['data']['lists'];
-        var_dump($list);
-        exit();
+        $ret=array();
+        foreach ($list as $list_item)
+        {
+            $ret_item=array();
+            $ret_item['name']=strip_tags($list_item['SongName']);
+            $ret_item['singer']=strip_tags($list_item['SingerName']);
+            $ret_item['hash']=$list_item['FileHash'];
+            $ret_item['from']="kugou";
+            $ret[]=$ret_item;
+        }
+        return $ret;
     }
 }

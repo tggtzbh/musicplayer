@@ -15,3 +15,4 @@ Route::get('/', "MusicMainControler@getIndexView");
 Route::get('getMusicList',"MusicMainControler@getMusicList");
 Route::get('getIndexList',"MusicMainControler@getIndexList");
 Route::post('getMusicResouse',"MusicMainControler@getMusicResouse");
+Route::post('getMusicSearchList',"MusicMainControler@getSearchList");

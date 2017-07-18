@@ -40,4 +40,9 @@ class MusicMainControler extends Controller
         $res=Netdata::getmusicurl($hash,$from);
         return json_encode($res);
     }
+    public function getSearchList(Request $request){
+        $keyword=$request->input("keyword");
+        $res=Netdata::get_search($keyword);
+        return json_encode($res);
+    }
 }

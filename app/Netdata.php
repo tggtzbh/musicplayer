@@ -43,4 +43,10 @@ class Netdata
         return array();
     }
 
+    static function get_search($keyword)
+    {
+        $musiclist=KuGou::get_search($keyword);
+        return $musiclist;
+    }
+
 }
