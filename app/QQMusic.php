@@ -85,4 +85,30 @@ class QQMusic
 
         return $musicitem;
     }
+
+    static function get_search($name)
+    {
+        $ret=file_get_contents("http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n=10&aggr=1&cr=1&loginUin=0&format=json&inCharset=GB2312&outCharset=utf-8&notice=0&platform=jqminiframe.json&needNewCode=0&p=1&catZhida=0&remoteplace=sizer.newclient.next_song&w=".$name);
+        /*$ret=preg_replace("/^jQuery191034642999175022426_1489023388639\(/","",$ret);
+        $ret=preg_replace("/\)$/","",$ret);
+        $ret=preg_replace("/^jQuery191034642999175022426_1489023388639\(/","",$ret);
+        $ret=preg_replace("/\)$/","",$ret);*/
+        $ret=json_decode($ret,true);
+        $list=$ret['data']['song']['list'];
+        $ret=array();
+        foreach ($list as $list_item)
+        {
+            $ret_item=array();
+            $ret_item['name']=$list_item['fsong'];
+            $ret_item['singer']=$list_item['fsinger'];
+            $list_item['f']=explode("|",$list_item['f']);
+            $ret_item['hash']=$list_item['f'][0]."-".$list_item['f'][4];
+
+            //$ret_array_a['hash']=$ret[$i]['data']['songid']."-".$ret[$i]['data']['albumid'];
+            //hash":"203120145-2151051"
+            $ret_item['from']="qqmusic";
+            $ret[]=$ret_item;
+        }
+        return $ret;
+    }
 }

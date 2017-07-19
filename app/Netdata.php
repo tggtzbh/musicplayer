@@ -45,7 +45,7 @@ class Netdata
 
     static function get_search($keyword)
     {
-        $musiclist=KuGou::get_search($keyword);
+        $musiclist=QQMusic::get_search($keyword);
         return $musiclist;
     }
 
