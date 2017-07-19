@@ -56,6 +56,9 @@ class NetEase
         return $ret;
     }
 
+    /**
+     * @return array
+     */
     static function get_songsheet_index()
     {
         $a=self::curl_get("http://music.163.com/discover");

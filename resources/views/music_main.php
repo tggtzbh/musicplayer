@@ -34,7 +34,7 @@
     <div class="songbook" v-show="!showcontrol && !showlist">
         <div class="search_bar">
             <div class="search_bar_input">
-                    <input id="search_keyword" name="keyword" type="text" placeholder="输入歌名/歌手进行搜索" v-on:keyup.enter="search">
+                    <input id="search_keyword" name="keyword" type="text" placeholder="输入歌名/歌手后按下回车进行搜索" v-on:keyup.enter="search">
             </div>
             <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M0000041RKcW3jle9C.jpg" alt="">
         </div>

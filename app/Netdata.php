@@ -28,6 +28,7 @@ class Netdata
 
     static function getmusicurl($hash,$from)
     {
+        $musicitem=null;
         if($from=="kugou")
         {
             $musicitem=KuGou::getmusicurl($hash);
