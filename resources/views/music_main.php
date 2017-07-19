@@ -74,6 +74,9 @@
             <div class="button" v-on:click="showcontrol=!showcontrol">
                 <i class="fa fa-arrow-down"></i>
             </div>
+            <div class="button" v-if="musiclist[playindex]" v-on:click="showcontrol=!showcontrol" style="float: right">
+                <img v-bind:src="'img/playericon/'+musiclist[playindex].from+'.png'" style="width: 40px"/>
+            </div>
         </div>
         <div class="row main" style="flex-grow: 1;">
             <div class="row">

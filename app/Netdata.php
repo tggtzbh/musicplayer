@@ -22,6 +22,7 @@ class Netdata
         {
             $htmllist=array_merge($htmllist,QQMusic::get_index($from));
         }
+        shuffle($htmllist);
         return $htmllist;
     }
 

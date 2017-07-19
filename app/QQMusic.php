@@ -102,6 +102,11 @@ class QQMusic
             $ret_item['name']=$list_item['fsong'];
             $ret_item['singer']=$list_item['fsinger'];
             $list_item['f']=explode("|",$list_item['f']);
+            if(!isset($list_item['f'][4]))
+            {
+                continue;
+            }
+
             $ret_item['hash']=$list_item['f'][0]."-".$list_item['f'][4];
 
             //$ret_array_a['hash']=$ret[$i]['data']['songid']."-".$ret[$i]['data']['albumid'];

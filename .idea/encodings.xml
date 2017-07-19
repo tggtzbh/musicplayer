@@ -9,6 +9,9 @@
     <file url="file://$PROJECT_DIR$/public/css/player_control.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/fonts" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/img" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/img/playericon/kugou.png" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/public/img/playericon/netease.png" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/public/img/playericon/qqmusic.png" charset="GB2312" />
     <file url="file://$PROJECT_DIR$/public/js/player_control.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/js/player_vue.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/js/vue-resource.js" charset="UTF-8" />
