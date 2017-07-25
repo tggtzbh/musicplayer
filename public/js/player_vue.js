@@ -91,8 +91,7 @@ let vm = new Vue({
                 this.play_pause=true;
             }
         },
-        playmodchange:function(event)
-        {
+        playmodchange:function(event) {
             switch (this.playmod)
             {
                 case "list":
@@ -103,8 +102,7 @@ let vm = new Vue({
                     break;
             }
         },
-        playpre:function(event)
-        {
+        playpre:function(event) {
             if(this.playmod=="list")
             {
                 //顺序播放
@@ -113,23 +111,24 @@ let vm = new Vue({
             }
             this.playmusic(this.musiclist[this.playindex].hash,this.musiclist[this.playindex].from);
         },
-        playnext:function(event)
-        {
+        playnext:function(event) {
             if(this.playmod=="list")
             {
                 //顺序播放
                 this.playindex=this.playindex+1;
                 this.playindex==this.musiclist.length? this.playindex=0:null;
             }
+            if(this.musiclist.length<1)
+            {
+                return;
+            }
             this.playmusic(this.musiclist[this.playindex].hash,this.musiclist[this.playindex].from);
         },
-        playlistindex:function(index)
-        {
+        playlistindex:function(index) {
             this.playindex=index;
             this.playmusic(this.musiclist[this.playindex].hash,this.musiclist[this.playindex].from);
         },
-        playvolume_state_set:function(volume)
-        {
+        playvolume_state_set:function(volume) {
             this.playvolume_state=!this.playvolume_state;
             if(media.muted==1)
             {
@@ -174,8 +173,7 @@ let vm = new Vue({
                 }
             }
         },
-        playmusic:function(hash,from)
-        {
+        playmusic:function(hash,from) {
             clearInterval(media_intervalno);
             media_intervalno=0;
             let ltricbox=document.getElementsByClassName("lyric-content");
@@ -220,8 +218,7 @@ let vm = new Vue({
                 }
             );
         },
-        addToPlaylist:function(index,playnow)
-        {
+        addToPlaylist:function(index,playnow) {
             if(playnow)
             {
                 this.musiclist.splice(0,0,this.indexlist[index]);
@@ -234,6 +231,29 @@ let vm = new Vue({
                 if(this.musiclist.length==1)
                 {
                     this.playmusic(this.musiclist[0].hash,this.musiclist[0].from);
+                }
+            }
+        },
+        removeFromPlaylist:function(index){
+            this.musiclist.splice(index,1);
+            if(this.playindex==index)
+            {
+                if(this.musiclist.length>1)
+                {
+                    this.playnext();
+                }
+                else
+                {
+                    media.setAttribute('src',"");
+                    media.play();
+                    this.play_pause=false;
+                }
+            }
+            else
+            {
+                if(this.playindex>index)
+                {
+                    this.playindex--;
                 }
             }
         }

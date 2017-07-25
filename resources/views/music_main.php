@@ -65,7 +65,7 @@
             <p class="count-box-name">{{ musicitem.singer }} - {{ musicitem.name }}</p>
         </div>
         <div class="count-box-button">
-            <i class="icson-angle-down"></i>
+            <i class="fa fa-times" aria-hidden="true" v-on:click="removeFromPlaylist(musicitem_index)"></i>
         </div>
     </div>
 

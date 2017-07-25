@@ -15,25 +15,25 @@ use Illuminate\Http\Request;
 
 class MusicMainControler extends Controller
 {
-    public function getIndexView() //获取界面文件
+    public function getIndexView() //鑾峰彇鐣岄潰鏂囦欢
     {
         return view("music_main");
     }
 
-    public function getIndexList() //获取界面文件
+    public function getIndexList() //鑾峰彇鐣岄潰鏂囦欢
     {
         $r=Netdata::get_index();
         return json_encode($r);
     }
 
-    public function getMusicList() //获取播放列表
+    public function getMusicList() //鑾峰彇鎾斁鍒楄〃
     {
         //$res=Netdata::getkugouindex();
         $res=Netdata::get_playlist();
         return json_encode($res);
     }
 
-    public function getMusicResouse(Request $request) //获取歌曲资源信息
+    public function getMusicResouse(Request $request) //鑾峰彇姝屾洸璧勬簮淇℃伅
     {
         $hash=$request->input("hash");
         $from=$request->input("from");

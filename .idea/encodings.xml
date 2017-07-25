@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Http/Controllers/MusicMainControler.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/KuGou.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/NetEase.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/QQMusic.php" charset="UTF-8" />
