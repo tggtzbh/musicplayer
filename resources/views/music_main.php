@@ -85,7 +85,6 @@
                     <div class="audio-info-img-top"></div>
                 </div>
                 <br/>
-                音量：{{ playvolume }}<br/>
                 总长度：{{play_time_full | formate_time_s}}<br/>
                 播放长度：{{play_time_complete | formate_time_s}}<br/>
                 <div class="button" v-on:click="playmodchange">
