@@ -75,6 +75,7 @@ let vm = new Vue({
               response => {
                   //console.log(response.body);
                   vm.$set(vm,'indexlist',response.body);
+                  document.getElementById("search_keyword").value="";
               },
               response => {
                   // error callback

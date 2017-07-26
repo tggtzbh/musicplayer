@@ -88,7 +88,7 @@ class QQMusic
 
     static function get_search($name)
     {
-        $ret=file_get_contents("http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n=10&aggr=1&cr=1&loginUin=0&format=json&inCharset=GB2312&outCharset=utf-8&notice=0&platform=jqminiframe.json&needNewCode=0&p=1&catZhida=0&remoteplace=sizer.newclient.next_song&w=".$name);
+        $ret=file_get_contents("http://s.music.qq.com/fcgi-bin/music_search_new_platform?t=0&n=20&aggr=1&cr=1&loginUin=0&format=json&inCharset=GB2312&outCharset=utf-8&notice=0&platform=jqminiframe.json&needNewCode=0&p=1&catZhida=0&remoteplace=sizer.newclient.next_song&w=".$name);
         /*$ret=preg_replace("/^jQuery191034642999175022426_1489023388639\(/","",$ret);
         $ret=preg_replace("/\)$/","",$ret);
         $ret=preg_replace("/^jQuery191034642999175022426_1489023388639\(/","",$ret);

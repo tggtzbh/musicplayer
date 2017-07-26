@@ -36,7 +36,7 @@
             <div class="search_bar_input">
                     <input id="search_keyword" name="keyword" type="text" placeholder="输入歌名/歌手后按下回车进行搜索" v-on:keyup.enter="search">
             </div>
-            <img src="http://y.gtimg.cn/music/photo_new/T003R720x288M0000041RKcW3jle9C.jpg" alt="">
+            <img src="./img/banner.jpg" alt="">
         </div>
         <div class="songbook_list">
             <div class="count-box" style="" v-for="(musicitem, musicitem_index) in indexlist">
